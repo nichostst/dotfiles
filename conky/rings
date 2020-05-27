@@ -1,0 +1,80 @@
+# -- Conky settings -- #
+background no
+update_interval 1
+ 
+cpu_avg_samples 2
+net_avg_samples 2
+ 
+override_utf8_locale yes
+ 
+double_buffer yes
+no_buffers yes
+ 
+text_buffer_size 2048
+imlib_cache_size 0
+ 
+# -- Window specifications -- #
+ 
+own_window yes
+own_window_type desktop
+own_window_argb_visual yes
+own_window_argb_value 10
+own_window_transparent no
+own_window_hints undecorated,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+ 
+minimum_size 920 270
+maximum_width 630
+ 
+alignment tl
+gap_x 10
+gap_y 49
+ 
+# -- Graphics settings -- #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+ 
+# -- Text settings -- #
+use_xft yes
+xftfont MaisonNeue-Book:size=18
+xftalpha 0.8
+
+uppercase no
+
+color1 FE7F4A
+color2 C8293F
+color3 7E0032
+color4 FFFFFF
+ 
+# -- Lua Load -- #
+lua_load ~/.Conky/clock_rings.lua
+lua_draw_hook_pre clock_rings
+ 
+TEXT
+${voffset 46}${goto 311}${font MaisonNeue-Book:size=8}${color2}DISK
+${voffset -2}${goto 280}${font MaisonNeue-Book:size=12}${color2}${fs_size /home}
+${voffset 46}${goto 124}${font MaisonNeue-Book:size=24:alpha=0.6}${color4}${time %H %M}
+${voffset -39}${goto 268}${color2}${hr 2}
+${voffset -131}${goto 278}${cpugraph 100,285 000000 888888} #${voffset -8} ${alignr}
+${voffset 18}${goto 285}${font MaisonNeue-Book:size=20}${color3}${time %A   }
+${voffset -10}${goto 285}${font MaisonNeue-Book:size=16}${color2}${time %d %B %Y}
+${font MaisonNeue-Book:size=12}${voffset -40}${goto 545}${color3}${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ wsap temperature}°C
+${font MaisonNeue-Book:size=7}${voffset -6}${goto 552}${color2}TEM
+${font MaisonNeue-Book:size=12}${voffset 7}${goto 471}${color3}${weather http://tgftp.nws.noaa.gov/data/observations/metar/stations/ wsap humidity}%
+${font MaisonNeue-Book:size=7}${voffset -6}${goto 477}${color2}HUM
+
+
+${font MaisonNeue-Book:size=7}${voffset -235}${goto 141}${color2}DISK
+${font MaisonNeue-Book:size=8}${voffset 11}${goto 125}${color2}BAT
+${font MaisonNeue-Book:size=8}${voffset 132}${goto 95}${color2}RAM
+${font MaisonNeue-Book:size=8}${voffset -68}${goto 232}${color2}CPU
+${font MaisonNeue-Book:size=8}${voffset -137}${goto 529}${color2}CPU
+${font MaisonNeue-Book:size=8}${voffset 36}${goto 531}${color2}°C
+${font MaisonNeue-Book:size=22}${voffset -51}${goto 523}${color3}${hwmon 2 temp 1}
+${font MaisonNeue-Book:size=7}${voffset -64}${goto 400}${color2}BATTERY
+${font MaisonNeue-Book:size=10}${voffset 50}${goto 412}${color2}%
+${font MaisonNeue-Book:size=32}${voffset -65}${goto 395}${color3}${battery_percent BAT0}
